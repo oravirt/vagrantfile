@@ -1,0 +1,6 @@
+inventory
+*.retry
+.vagrant/*
+*.vdi
+swrepo/*.zip
+extra-provision/ansible-oracle
