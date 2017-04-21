@@ -110,6 +110,7 @@ For this to take effect `provisioning_env_override` must be set to `true` in `ho
 * **`numpdbs`** - The number of pdbs that should be created. Default is `0`.
 * **`pdbname`** - The name of the pdb. Default is `orclpdb`. If `numpdbs` > 1, the name will be `pdbname1, pdbname2` etc.
 * **`dbmem`** - The amount of sga in MB allocated to the database. Default is `1024` MB
+* **`ron_service`** - The service_name allocated for a `RACONENODE` configuration. Default is `dbname_serv`
 
 The following will create a 12.1.0.2 config with a SI cdb and a pdb
 * `setup=true giver=12.1.0.2 dbver=12.1.0.2 cdb=true numpdbs=1 vagrant up`
