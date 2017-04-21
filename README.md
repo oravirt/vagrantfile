@@ -35,7 +35,7 @@ Pre-requisites:
 
 
 ### Submodule
-`https://github.com/oravirt/ansible-oracle` is placed in `extra-provision/ansible-oracle`
+`https://github.com/oravirt/ansible-oracle` is placed in `extra-provision/ansible-oracle` (**`git submodule add https://github.com/oravirt/ansible-oracle extra-provision/ansible-oracle`**)
 
 
 ### hosts.yml variables (with example values)
@@ -84,7 +84,7 @@ local_disks:
    - {name: u02, size: 100, count: 1}
 ```
 
-**`create_shared_disk: true`** - `true/false`. Should shared disks be added. They will be created when the first VM is created and attached to the rest of the VM's within the `hostgroup`
+**`create_shared_disk: true`** - `true/false`. Should shared disks be added. They will be created when the first VM is created and attached to the rest of the VM's within the `hostgroup`. These disks are not sparse, meaning they will consume the all the space you allocate.
 
 **`shared_disks:`** These are the shared disks you want to create. `size` is in GB, `count` is the number of of disks each `name` should have. The naming standard is `hostgroup-name-serialnumber`, i.e (`mygroup-crs-1, mygroup-crs-2, mygroup-crs-3, mygroup-data-1, mygroup-fra-1, mygroup-fra-2`)
 ```

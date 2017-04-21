@@ -45,6 +45,11 @@ if ENV['dbmem']
 else
  DBMEM = "1024"
 end
+if ENV['ron_service']
+ RON_SERVICE = ENV['ron_service']
+else
+ RON_SERVICE = "#{DBNAME}_serv"
+end
 
 if VALID_VERSIONS.include? DBVER
 else
@@ -83,6 +88,7 @@ is_container: "#{CDB}",
 pdb_prefix: "#{PDBNAME}",
 num_pdbs: "#{NUMPDBS}",
 storage_type: "#{DBSTORAGE}",
+service_name: "#{RON_SERVICE}",
 oracle_db_mem_totalmb: "#{DBMEM}",
 oracle_database_type: "MULTIPURPOSE",
 redolog_size_in_mb: "100",

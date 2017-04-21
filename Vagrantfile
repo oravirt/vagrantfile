@@ -74,6 +74,7 @@ servers.each_with_index do |vm,index|
         check = index+num_vms
         hostname = "#{vm['basename_vm']}#{v}"
         hostgroup = "#{vm['hostgroup']}"
+        domain = "#{vm['domain']}"
         provisioning = vm['provisioning'] unless vm['provisioning'].nil?
         provisioning_env_override = vm['provisioning_env_override'] unless vm['provisioning_env_override'].nil?
         baseip_pub = IPAddr.new vm['base_pub_ip']
@@ -150,6 +151,7 @@ servers.each_with_index do |vm,index|
                   ansible.limit = "#{hostgroup}"
                   if provisioning_env_override
                   ansible.extra_vars = {
+                    oracle_scan: "#{hostgroup}.#{domain}",
                     oracle_install_version_gi: "#{GIVER}",
                     oracle_databases: "#{ORACLE_DATABASES.to_json}"
                   }
