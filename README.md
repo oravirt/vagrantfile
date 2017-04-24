@@ -287,7 +287,7 @@ It (of course) depends on the HW you're running it on. But using a ssd makes a L
 
 A normal 2-node 12.1 RAC installation usually takes ~1H, on a 8GB macbook pro with a ssd. I tested the second RAC example (2 nodes in 2 different DC's) on an Intel NUC with 32GB ram and an nvme ssd and that took slightly less than 2 hours. The provisioning works on 1 hostgroup at the time, meaning it will create VM's and install Oracle on the first hostgroup and then create the VM's and install Oracle on the second hostgroup.
 
-If you were to run Ansible outside of Vagrant you could parallelize in a better way and maybe cut the runtime.
+Running the Oracle provisioning part outside of Vagrant in the 'multi-dc' case i.e running on both hostgroups at the same time, cuts the runtime down to ~80min (on the same Intel Nuc hw).
 
 Just creating a VM, and letting the base-provisioner run usually just takes a couple of minutes and is mostly dependent on the size of the box and the IO-capacity of the host.
 
