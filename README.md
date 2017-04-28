@@ -44,7 +44,7 @@ Pre-requisites:
 
 **`num_vm: 2`** - This means that 2 VM's will be created. This is also what determines the serial number used for naming VM's, incrementing IP's
 
-**`hostgroup: mygroup`** - This is the group under which the VM's will be placed in the Ansible inventory. Also used when naming shared disks
+**`hostgroup: mygroup`** - This is the group under which the VM's will be placed in the Ansible inventory. Also used when naming shared disks. All VM's within this hostgroup will be grouped in a folder with the same name in Virtualbox
 
 **`domain: mydomain.xxx`** - The domainname for the vm
 
@@ -52,9 +52,9 @@ Pre-requisites:
 
 **`vagrant_user: vagrant`** - Sets the `ansible_ssh_user` parameter in the inventory
 
-**`vagrant_pass: vagrant`** - Sets the `ansible_ssh_pass` parameter in the inventory (if this is used, **vagrant_private_key** should not be set )
+**`vagrant_pass: vagrant`** - Sets the `ansible_ssh_pass` parameter in the inventory (if this is used, `vagrant_private_key` should not be set)
 
-**`vagrant_private_key:`** - Sets the `ansible_ssh_private_key_file` parameter in the inventory. (if this is used, **vagrant_pass** should not be set ).
+**`vagrant_private_key:`** - Sets the `ansible_ssh_private_key_file` parameter in the inventory. (if this is used, `vagrant_pass` should not be set)
 
 **`ram: 4096`** - (MB) The amount of RAM the VM should have
 
@@ -74,6 +74,8 @@ synced_folders:
    - {src: /Users/miksan/Downloads/oracle, dest: /media/swrepo}
    - {src: /Users/miksan/swingbench, dest: /media/swingbench}
 ```
+
+**`base_disk_path: /Users/miksan/apps/VBOX`** - If set, all disks (local & shared) created by Vagrant will be placed in the following directory: (`#{base_disk_path}/#{hostgroup}`, i.e '`/Users/miksan/apps/VBOX/mygroup`') . If this is set to the same as the VBOX default (`Default machine folder`), the `hostgroup` directory will be removed after 'vagrant destroy' is performed. If the parameter is set to something else, the directories will not be removed automatically. If the parameter is not set, all disks will be placed in the same directory as `Vagrantfile`.
 
 **`create_local_disk: true`** - `true/false`. Should extra disks be added (non-shared). Created as sparse disks.
 
