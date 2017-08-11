@@ -8,7 +8,7 @@ It integrates with https://github.com/oravirt/ansible-oracle, but if all that is
 It uses the vagrant `ansible_local` provisioner, meaning that Ansible needs to be installed in the box you're using. If it is not installed Vagrant will try to install it. If that doesn't work you'll have to install it manually.
 See http://docs.ansible.com/ansible/intro_installation.html.
 
-If any of these boxes are used: https://atlas.hashicorp.com/oravirt, Ansible is already installed.
+If any of these boxes are used: https://app.vagrantup.com/oravirt, Ansible is already installed.
 
 If another box is used and ansible can not be installed for whatever reason, the VM's will still be created, it's just that the DNS part will not be configured.
 
