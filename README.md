@@ -75,6 +75,19 @@ synced_folders:
    - {src: /Users/miksan/swingbench, dest: /media/swingbench}
 ```
 
+**`port_forward: false`** - `true/false`. If portforwarding (not to confuse with Vagrants native ssh portforward) is needed between the host and the guest.
+If more than 1 guest is built, the ports on the host will follow the same procedure as for the IP addresses.
+```
+forwarded_port:
+          - {hostport: 8080, guestport: 8080}
+```
+```
+So in this case (with 2 VM's), the mapping will look like this:
+
+host:8081 -> VM2:8080
+host: 8080 -> VM1:8080
+```
+
 **`base_disk_path: /Users/miksan/apps/VBOX`** - If set, all disks (local & shared) created by Vagrant will be placed in the following directory: (`#{base_disk_path}/#{hostgroup}`, i.e '`/Users/miksan/apps/VBOX/mygroup`') . If this is set to the same as the VBOX default (`Default machine folder`), the `hostgroup` directory will be removed after 'vagrant destroy' is performed. If the parameter is set to something else, the directories will not be removed automatically. If the parameter is not set, all disks will be placed in the same directory as `Vagrantfile`.
 
 **`create_local_disk: true`** - `true/false`. Should extra disks be added (non-shared). Created as sparse disks.
