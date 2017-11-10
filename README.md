@@ -82,7 +82,7 @@ forwarded_port:
           - {hostport: 8080, guestport: 8080}
 ```
 ```
-So in this case (with 2 VM's), the mapping will look like this:
+So in this case (with 2 VM's), the mapping would look like this:
 
 host:8081 -> VM2:8080
 host: 8080 -> VM1:8080
