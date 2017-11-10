@@ -103,6 +103,12 @@ servers.each_with_index do |vm,index|
           srv.vm.hostname = hostname
           srv.vm.network "private_network", ip: pubip
           srv.vm.network "private_network", ip: privip unless privip.nil?
+          if vm['port_forward']
+            vm['forwarded_port'].each do |port|
+             hport = port['hostport'].to_i-1+v
+             srv.vm.network "forwarded_port", guest: port['guestport'], host: "#{hport}"
+           end
+          end
           srv.vm.provider :virtualbox do |vb|
               vb.name = hostname
               vb.memory = vm["ram"]
